@@ -13,6 +13,7 @@ enum APIError: Error {
     case unknownResponse
     case statusError
     case timeOut
+    case decodeError
 }
 
 class SearchService: NSObject {
@@ -43,6 +44,8 @@ class SearchService: NSObject {
                 
                 if let data = data, let appData = try? JSONDecoder().decode(SearchAppModel.self, from: data) {
                     observer.onNext(appData.results)
+                } else {
+                    observer.onError(APIError.decodeError)
                 }
             }.resume()
             

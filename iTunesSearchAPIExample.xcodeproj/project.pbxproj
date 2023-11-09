@@ -21,6 +21,10 @@
 		C753E4C52AFB484200B6C208 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C753E4C42AFB484200B6C208 /* RxCocoa */; };
 		C753E4C72AFB484200B6C208 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C753E4C62AFB484200B6C208 /* RxSwift */; };
 		C753E4C92AFB767D00B6C208 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C753E4C82AFB767D00B6C208 /* LoadingView.swift */; };
+		C7B4B4A22AFBA43B008DF79E /* SearchListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B4B4A12AFBA43B008DF79E /* SearchListCollectionViewCell.swift */; };
+		C7B4B4A52AFBB92D008DF79E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C7B4B4A42AFBB92D008DF79E /* SnapKit */; };
+		C7B4B4A72AFBBB0D008DF79E /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B4B4A62AFBBB0D008DF79E /* UIImageView+.swift */; };
+		C7B4B4AD2AFBBC83008DF79E /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = C7B4B4AC2AFBBC83008DF79E /* RxDataSources */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,8 @@
 		C753E4B62AFB0F0D00B6C208 /* SearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchModel.swift; sourceTree = "<group>"; };
 		C753E4C12AFB44C600B6C208 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		C753E4C82AFB767D00B6C208 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		C7B4B4A12AFBA43B008DF79E /* SearchListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchListCollectionViewCell.swift; sourceTree = "<group>"; };
+		C7B4B4A62AFBBB0D008DF79E /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7B4B4A52AFBB92D008DF79E /* SnapKit in Frameworks */,
+				C7B4B4AD2AFBBC83008DF79E /* RxDataSources in Frameworks */,
 				C753E4C72AFB484200B6C208 /* RxSwift in Frameworks */,
 				C753E4C52AFB484200B6C208 /* RxCocoa in Frameworks */,
 			);
@@ -86,6 +94,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C72885492AFD20A90066B83F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C753E4822AFA8DE800B6C208 /* AppDelegate.swift */,
+				C753E4842AFA8DE800B6C208 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C728854A2AFD20B30066B83F /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				C728854C2AFD20CB0066B83F /* Data */,
+				C728854B2AFD20BF0066B83F /* Presentation */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		C728854B2AFD20BF0066B83F /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				C728854D2AFD20DE0066B83F /* Extension */,
+				C753E4C82AFB767D00B6C208 /* LoadingView.swift */,
+				C753E4C12AFB44C600B6C208 /* SearchViewModel.swift */,
+				C753E4B22AFA8F9D00B6C208 /* SearchViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		C728854C2AFD20CB0066B83F /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C753E4B62AFB0F0D00B6C208 /* SearchModel.swift */,
+				C753E4B42AFB09A300B6C208 /* SearchService.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		C728854D2AFD20DE0066B83F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C7B4B4A62AFBBB0D008DF79E /* UIImageView+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		C753E4762AFA8DE800B6C208 = {
 			isa = PBXGroup;
 			children = (
@@ -109,17 +163,12 @@
 		C753E4812AFA8DE800B6C208 /* iTunesSearchAPIExample */ = {
 			isa = PBXGroup;
 			children = (
+				C728854A2AFD20B30066B83F /* Source */,
+				C72885492AFD20A90066B83F /* App */,
 				C7AD09F02AFB808B008B5309 /* Cell */,
-				C753E4822AFA8DE800B6C208 /* AppDelegate.swift */,
-				C753E4842AFA8DE800B6C208 /* SceneDelegate.swift */,
 				C753E48B2AFA8DE900B6C208 /* Assets.xcassets */,
 				C753E48D2AFA8DE900B6C208 /* LaunchScreen.storyboard */,
 				C753E4902AFA8DE900B6C208 /* Info.plist */,
-				C753E4B22AFA8F9D00B6C208 /* SearchViewController.swift */,
-				C753E4C12AFB44C600B6C208 /* SearchViewModel.swift */,
-				C753E4B42AFB09A300B6C208 /* SearchService.swift */,
-				C753E4B62AFB0F0D00B6C208 /* SearchModel.swift */,
-				C753E4C82AFB767D00B6C208 /* LoadingView.swift */,
 			);
 			path = iTunesSearchAPIExample;
 			sourceTree = "<group>";
@@ -144,6 +193,7 @@
 		C7AD09F02AFB808B008B5309 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				C7B4B4A12AFBA43B008DF79E /* SearchListCollectionViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -167,6 +217,8 @@
 			packageProductDependencies = (
 				C753E4C42AFB484200B6C208 /* RxCocoa */,
 				C753E4C62AFB484200B6C208 /* RxSwift */,
+				C7B4B4A42AFBB92D008DF79E /* SnapKit */,
+				C7B4B4AC2AFBBC83008DF79E /* RxDataSources */,
 			);
 			productName = iTunesSearchAPIExample;
 			productReference = C753E47F2AFA8DE800B6C208 /* iTunesSearchAPIExample.app */;
@@ -242,6 +294,8 @@
 			mainGroup = C753E4762AFA8DE800B6C208;
 			packageReferences = (
 				C753E4C32AFB484200B6C208 /* XCRemoteSwiftPackageReference "RxSwift" */,
+				C7B4B4A32AFBB92D008DF79E /* XCRemoteSwiftPackageReference "SnapKit" */,
+				C7B4B4AB2AFBBC83008DF79E /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = C753E4802AFA8DE800B6C208 /* Products */;
 			projectDirPath = "";
@@ -285,12 +339,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7B4B4A72AFBBB0D008DF79E /* UIImageView+.swift in Sources */,
 				C753E4C22AFB44C600B6C208 /* SearchViewModel.swift in Sources */,
 				C753E4B32AFA8F9D00B6C208 /* SearchViewController.swift in Sources */,
 				C753E4B52AFB09A300B6C208 /* SearchService.swift in Sources */,
 				C753E4832AFA8DE800B6C208 /* AppDelegate.swift in Sources */,
 				C753E4B72AFB0F0D00B6C208 /* SearchModel.swift in Sources */,
 				C753E4C92AFB767D00B6C208 /* LoadingView.swift in Sources */,
+				C7B4B4A22AFBA43B008DF79E /* SearchListCollectionViewCell.swift in Sources */,
 				C753E4852AFA8DE800B6C208 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -640,6 +696,22 @@
 				minimumVersion = 6.6.0;
 			};
 		};
+		C7B4B4A32AFBB92D008DF79E /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.6.0;
+			};
+		};
+		C7B4B4AB2AFBBC83008DF79E /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -652,6 +724,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C753E4C32AFB484200B6C208 /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		C7B4B4A42AFBB92D008DF79E /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C7B4B4A32AFBB92D008DF79E /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		C7B4B4AC2AFBBC83008DF79E /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C7B4B4AB2AFBBC83008DF79E /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

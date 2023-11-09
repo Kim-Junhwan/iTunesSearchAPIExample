@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import RxCocoa
+import RxDataSources
 
 class SearchViewController: UIViewController {
     
@@ -26,6 +27,7 @@ class SearchViewController: UIViewController {
         title = "검색"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationItem.searchController = searchController
+        collectionView.register(SearchListCollectionViewCell.self, forCellWithReuseIdentifier: "SearchListCell")
     }
     
     private func bind() {
@@ -39,12 +41,14 @@ class SearchViewController: UIViewController {
                 LoadingView.hide()
             }
         }.disposed(by: viewModel.disposeBag)
-        output.searchResult.subscribe(with: self) { owner, result in
-            print(result)
-        } onError: { owner, error in
+        output.searchResult.drive(onNext: { result in
+            print(result.count)
+        }).disposed(by: viewModel.disposeBag)
+        
+        output.searchError.drive(with: self) { owner, error in
             owner.showErrorAlert(error: error)
         }.disposed(by: viewModel.disposeBag)
-
+        
     }
     
     private func makeCollectionViewLayout() -> UICollectionViewLayout {

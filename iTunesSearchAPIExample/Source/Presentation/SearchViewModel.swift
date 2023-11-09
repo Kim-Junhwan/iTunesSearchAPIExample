@@ -21,8 +21,11 @@ protocol BaseViewModel {
 class SearchViewModel: BaseViewModel {
     
     private var searchResult: [AppInfo] = []
+    var searchResultRelay = PublishRelay<[AppInfo]>()
+    var searchError = PublishRelay<Error>()
     var disposeBag = DisposeBag()
     private let isLoading: BehaviorRelay<Bool> = .init(value: false)
+    private let currentError: PublishRelay<Error> = .init()
     let searchService = SearchService()
     
     struct Input {
@@ -32,30 +35,31 @@ class SearchViewModel: BaseViewModel {
     
     struct Output {
         let isLoading: Driver<Bool>
-        let searchResult: Observable<[AppInfo]>
+        let searchResult: Driver<[AppInfo]>
+        let searchError: Driver<Error>
     }
     
     func transform(input: Input) -> Output {
-        let searchResultSubject: PublishSubject<[AppInfo]> = .init()
+        
         input.tapSearchButton.withLatestFrom(input.searchText) { _ , query in
             return query
-        }.subscribe(on: MainScheduler.instance)
-            .flatMap { self.searchKeyword(keyword: $0) }
-            .subscribe(with: self) { owner, result in
-                owner.isLoading.accept(false)
-            owner.searchResult.append(contentsOf: result)
-            searchResultSubject.onNext(owner.searchResult)
-        } onError: { owner, error in
-            owner.isLoading.accept(false)
-            searchResultSubject.onError(error)
+        }.bind(with: self) { owner, query in
+            owner.searchKeyword(keyword: query)
         }.disposed(by: disposeBag)
-
-        return Output(isLoading: isLoading.asDriver(), searchResult: searchResultSubject)
+        
+        return Output(isLoading: isLoading.asDriver(), searchResult: searchResultRelay.asDriver(onErrorJustReturn: []), searchError: searchError.asDriver(onErrorJustReturn: APIError.unknownResponse))
     }
     
-    private func searchKeyword(keyword: String) -> Observable<[AppInfo]> {
+    private func searchKeyword(keyword: String){
         isLoading.accept(true)
-        return searchService.fetchBoxOfficeData(searchKeyword: keyword)
+        searchService.fetchBoxOfficeData(searchKeyword: keyword).subscribe(with: self) { owner, result in
+            owner.isLoading.accept(false)
+            owner.searchResultRelay.accept(result)
+        } onError: { owner, error in
+            owner.isLoading.accept(false)
+            owner.searchError.accept(error)
+        }.disposed(by: disposeBag)
+
     }
     
 }

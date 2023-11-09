@@ -13,6 +13,7 @@ struct SearchAppModel: Codable {
 }
 
 struct AppInfo: Codable {
+    
     let screenshotUrls: [String]
     let trackName: String // 이름
     let genres: [String] // 장르
@@ -28,4 +29,5 @@ struct AppInfo: Codable {
     let trackId: Int
     let version: String
     let releaseNotes: String
+    let artistName: String
 }
